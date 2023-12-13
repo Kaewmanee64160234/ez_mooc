@@ -118,7 +118,7 @@ class VideoCard extends StatelessWidget {
                 SizedBox(width: 8.0),
                 Expanded(
                   child: Text(
-                    '${vdoDetail.channelName} • ${_formatUploadDate(DateTime.now())}',
+                    '${vdoDetail.channelName} • ${_formatUploadDate(DateTime.parse(subject.createdAt))}',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 20.0,
@@ -143,7 +143,7 @@ class VideoCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  vdoDetail.videoTitle,
+                  subject.subjectName,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,

@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
         backgroundColor: Color(0xff551E68),
         leading: Image.asset(
           'images/logo.png', // Replace with your logo asset
-          height: 80.0,
+          height: 75.0,
         ),
         title: Text(
           'MOOC',
@@ -56,7 +56,7 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     // Category Section
                     Padding(
-                      padding: const EdgeInsets.only(left: 16.0, top: 16.0),
+                      padding: const EdgeInsets.only(left: 16.0, top: 15.0),
                       child: Text(
                         'หมวดหมู่',
                         textAlign: TextAlign.left,
@@ -68,8 +68,8 @@ class HomeView extends GetView<HomeController> {
                       ),
                     ),
                     Container(
-                      height: 180.0,
-                      padding: EdgeInsets.all(10.0),
+                      height: 155.0,
+                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
