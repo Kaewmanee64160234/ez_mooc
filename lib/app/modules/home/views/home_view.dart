@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:ez_mooc/app/data/model/vdo_detail_model.dart';
+import 'package:ez_mooc/components/BuildCard.dart';
 import 'package:ez_mooc/components/VideoCard.dart';
 import 'package:ez_mooc/services/category_service.dart';
 import 'package:ez_mooc/services/enrollment_service.dart';
@@ -162,58 +163,5 @@ class HomeView extends GetView<HomeController> {
 }
 
 Widget _buildAllCardDetail(String imagePath, String nameCat) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Column(
-      children: [
-        _buildCategoryCard(imagePath),
-        SizedBox(height: 10.0),
-        Text(nameCat,
-            style: TextStyle(
-              fontSize: 20.0,
-              fontFamily: 'Kanit',
-            )),
-      ],
-    ),
-  );
-}
-
-Widget _buildCategoryCard(String imagePath) {
-  Color backgroundColor = Color(0xFFC3ACD0);
-
-  return Container(
-    width: 100.0, // Adjust the width to make the card square
-    height: 100.0, // Maintain a square shape
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.circular(15.0),
-      boxShadow: [
-        BoxShadow(
-          color: backgroundColor.withOpacity(1),
-          spreadRadius: 1,
-          blurRadius: 5,
-          offset: Offset(0, 2),
-        ),
-      ],
-    ),
-    child: ClipRRect(
-      borderRadius: BorderRadius.circular(15.0),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-        child: Container(
-          width: 100.0,
-          height: 100.0,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: backgroundColor.withOpacity(0.8),
-          ),
-          child: Center(
-            child: Image.network(
-              imagePath,
-              height: 60.0,
-            ),
-          ),
-        ),
-      ),
-    ),
-  );
+  return CategoryCard(imagePath: imagePath, categoryName: nameCat);
 }
