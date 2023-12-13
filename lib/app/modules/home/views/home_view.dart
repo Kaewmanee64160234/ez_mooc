@@ -102,6 +102,11 @@ class HomeView extends GetView<HomeController> {
                             videoUrl: Get.find<SubjectService>()
                                 .playlists[index]
                                 .playlistLink,
+                            subject:
+                                Get.find<SubjectService>().playlists[index],
+                            vdoDetail: Get.find<SubjectService>()
+                                .playlists[index]
+                                .videos[0],
                           ),
                           onTap: () {
                             for (var element in Get.find<SubjectService>()

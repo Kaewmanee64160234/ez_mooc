@@ -3,6 +3,7 @@ import 'package:ez_mooc/app/data/model/subject_model.dart';
 import 'package:ez_mooc/app/data/model/vdo_detail_model.dart';
 import 'package:ez_mooc/app/data/repositories/subject_repository.dart';
 import 'package:get/get.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 class SubjectService extends GetxService {
   final SubjectRepository subjectRepository = SubjectRepository();
@@ -64,8 +65,7 @@ class SubjectService extends GetxService {
             "https://youtube.com/playlist?list=PLESnSmimWaOyrrEncqo3tQZXWvu-13UwF&si=8Yz-rjkucAHVzRtN",
         videos: [
           VdoDetail(
-          category: [],
-
+            category: [],
             videoTitle:
                 '"เฮี้ยน" | คุณแก๊ป | 5 ก.พ. 17 | THE GHOST RADIO | เล่าเรื่องผีเดอะโกส',
             channelName: "The ghost",
@@ -78,8 +78,7 @@ class SubjectService extends GetxService {
             updatedAt: '',
           ),
           VdoDetail(
-          category: [],
-
+            category: [],
             videoTitle:
                 'ห้องสนิม | คุณแป้ง | 6 ม.ค. 61 | ***น่ากลัวมากของปี 2561 THE GHOST RADIO | ฟังเรื่องผีเดอะโกส',
             channelName: "The ghost",
@@ -116,6 +115,21 @@ class SubjectService extends GetxService {
     } catch (e) {
       print("Error fetching subjects: $e");
       // Handle exception, e.g., show an error message
+    }
+  }
+
+  Future<String> getChannelProfileImageUrlFromVideoUrl(String videoUrl) async {
+    var yt = YoutubeExplode();
+    try {
+      var videoId = VideoId(videoUrl);
+      var video = await yt.videos.get(videoId);
+      var channel = await yt.channels.get(video.channelId);
+      return channel.logoUrl;
+    } catch (e) {
+      print('An error occurred: $e');
+      return '';
+    } finally {
+      yt.close();
     }
   }
 }
