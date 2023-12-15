@@ -12,6 +12,6 @@ class VdoPageBinding extends Bindings {
       () => VdoPageController(),
     );
     Get.put(NavigationService());
-    Get.put(VdoDetailService());
+    Get.lazyPut(() => VdoDetailService());
   }
 }

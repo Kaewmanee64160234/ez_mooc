@@ -79,7 +79,11 @@ class HomeView extends GetView<HomeController> {
                             GestureDetector(
                               child: _buildAllCardDetail(
                                   element.categoryImage, element.categoryName),
-                              onTap: () {
+                              onTap: () async {
+                                await Get.find<VdoDetailService>()
+                                    .setCurrentCategory(element.categoryId);
+                                print(
+                                    "======Current Category: ${element.categoryId}========");
                                 Get.find<NavigationService>()
                                     .changeSelectedItem(5);
                               },

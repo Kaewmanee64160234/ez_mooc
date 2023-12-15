@@ -4,6 +4,7 @@ import 'package:ez_mooc/app/modules/home/controllers/home_controller.dart';
 import 'package:ez_mooc/app/modules/likeVdo/controllers/like_vdo_controller.dart';
 import 'package:ez_mooc/app/modules/playlist/controllers/playlist_controller.dart';
 import 'package:ez_mooc/app/modules/profile/controllers/profile_controller.dart';
+import 'package:ez_mooc/app/modules/vdo_category/controllers/vdo_category_controller.dart';
 import 'package:ez_mooc/app/modules/vdo_page/controllers/vdo_page_controller.dart';
 import 'package:ez_mooc/services/bookmark_service.dart';
 import 'package:ez_mooc/services/category_service.dart';
@@ -30,7 +31,6 @@ class MainBinding extends Bindings {
     Get.put(HomeController());
     Get.put(PlaylistController());
     Get.put(BookmarksService());
-
     Get.put(HistoryController());
     Get.lazyPut(() => EnrollmentController());
     Get.put(ProfileController());
@@ -41,5 +41,6 @@ class MainBinding extends Bindings {
     Get.lazyPut(() => VdoPageController());
     Get.lazyPut(() => FavoritesService());
     Get.put(LikeVdoController());
+    Get.lazyPut(() => VdoCategoryController());
   }
 }
