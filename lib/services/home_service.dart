@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class NavigationController extends GetxController {
+class NavigationService extends GetxController {
   RxInt currentIndex = 0.obs;
   RxInt selectedItem = 2.obs;
   @override

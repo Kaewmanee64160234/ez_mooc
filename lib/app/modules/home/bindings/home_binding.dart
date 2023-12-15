@@ -12,6 +12,7 @@ class HomeBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => UserService()); // Changed to lazyPut for consistency
+    Get.lazyPut(() => NavigationService());
     Get.lazyPut(
         () => SubjectService()); // Moved before HomeController initialization
     Get.lazyPut(() => VdoDetailService());

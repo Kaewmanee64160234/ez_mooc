@@ -9,6 +9,6 @@ class ProfileBinding extends Bindings {
     Get.lazyPut<ProfileController>(
       () => ProfileController(),
     );
-    Get.put(NavigationController());
+    Get.put(NavigationService());
   }
 }

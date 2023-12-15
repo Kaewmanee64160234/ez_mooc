@@ -11,6 +11,7 @@ abstract class Routes {
   static const MAIN = _Paths.MAIN;
   static const HISTORY = _Paths.HISTORY;
   static const LIKE_VDO = _Paths.LIKE_VDO;
+  static const VDO_CATEGORY = _Paths.VDO_CATEGORY;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const MAIN = '/main';
   static const HISTORY = '/history';
   static const LIKE_VDO = '/like-vdo';
+  static const VDO_CATEGORY = '/vdo-category';
 }

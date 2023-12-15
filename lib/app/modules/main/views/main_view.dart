@@ -3,6 +3,8 @@ import 'package:ez_mooc/app/modules/history/views/history_view.dart';
 import 'package:ez_mooc/app/modules/home/views/home_view.dart';
 import 'package:ez_mooc/app/modules/likeVdo/views/like_vdo_view.dart';
 import 'package:ez_mooc/app/modules/profile/views/profile_view.dart';
+import 'package:ez_mooc/app/modules/vdo_category/views/vdo_category_view.dart';
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/main_controller.dart';
@@ -14,7 +16,7 @@ class MainView extends GetView<MainController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        return _getBody(controller.selectedItem.value);
+        return _getBody(Get.find<NavigationService>().selectedItem.value);
       }),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
@@ -29,9 +31,9 @@ class MainView extends GetView<MainController> {
             type: BottomNavigationBarType.fixed,
             selectedFontSize: 0.0,
             unselectedFontSize: 0.0,
-            currentIndex: controller.selectedItem.value,
+            currentIndex: Get.find<NavigationService>().selectedItem.value,
             onTap: (index) {
-              controller.changeSelectedItem(index);
+              Get.find<NavigationService>().changeSelectedItem(index);
             },
             items: [
               BottomNavigationBarItem(
@@ -93,6 +95,8 @@ class MainView extends GetView<MainController> {
       case 4:
         controller.logEvent('profile', {'profile': 'profile'});
         return ProfileView();
+      case 5:
+        return VdoCategoryView();
       default:
         return Container(); // Handle default case or return an empty container.
     }

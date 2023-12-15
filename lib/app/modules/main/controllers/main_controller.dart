@@ -8,8 +8,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 class MainController extends GetxController {
   //TODO: Implement MainController
-  RxInt currentIndex = 0.obs;
-  RxInt selectedItem = 2.obs;
+
   final FirebaseAnalytics _analytics = FirebaseAnalytics.instance;
 
   @override
@@ -20,10 +19,6 @@ class MainController extends GetxController {
     Get.find<EnrollmentService>().getEnrolmentsByUserId();
     Get.find<FavoritesService>().fetchFavoritesByUserId(
         Get.find<UserService>().currentUser.value.user_id);
-  }
-
-  void changeSelectedItem(int index) {
-    selectedItem.value = index;
   }
 
   @override

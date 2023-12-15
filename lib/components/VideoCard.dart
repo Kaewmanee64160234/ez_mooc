@@ -125,7 +125,7 @@ class VideoCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                Icon(Icons.more_vert),
+                // Icon(Icons.more_vert),
               ],
             ),
           ),

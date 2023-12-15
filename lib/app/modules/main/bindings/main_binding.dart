@@ -9,6 +9,7 @@ import 'package:ez_mooc/services/bookmark_service.dart';
 import 'package:ez_mooc/services/category_service.dart';
 import 'package:ez_mooc/services/enrollment_service.dart';
 import 'package:ez_mooc/services/favorites_service.dart';
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:ez_mooc/services/subject_service.dart';
 import 'package:ez_mooc/services/user_service.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
@@ -22,6 +23,8 @@ class MainBinding extends Bindings {
     Get.lazyPut<MainController>(
       () => MainController(),
     );
+    Get.put(NavigationService());
+
     Get.put(UserService());
 
     Get.put(HomeController());

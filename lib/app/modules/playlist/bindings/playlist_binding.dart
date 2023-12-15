@@ -15,7 +15,7 @@ class PlaylistBinding extends Bindings {
     );
     Get.put(SubjectService());
     Get.put(EnrollmentService());
-    Get.put(NavigationController());
+    Get.put(NavigationService());
 
     Get.lazyPut(() => VdoDetailService());
     Get.lazyPut(() => PlaylistController());

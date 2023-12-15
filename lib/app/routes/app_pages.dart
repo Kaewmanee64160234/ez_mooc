@@ -14,6 +14,8 @@ import '../modules/playlist/bindings/playlist_binding.dart';
 import '../modules/playlist/views/playlist_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
+import '../modules/vdo_category/bindings/vdo_category_binding.dart';
+import '../modules/vdo_category/views/vdo_category_view.dart';
 import '../modules/vdo_page/bindings/vdo_page_binding.dart';
 import '../modules/vdo_page/views/vdo_page_view.dart';
 
@@ -64,6 +66,11 @@ class AppPages {
       name: _Paths.LIKE_VDO,
       page: () => const LikeVdoView(),
       binding: LikeVdoBinding(),
+    ),
+    GetPage(
+      name: _Paths.VDO_CATEGORY,
+      page: () => const VdoCategoryView(),
+      binding: VdoCategoryBinding(),
     ),
   ];
 }

@@ -6,6 +6,7 @@ import 'package:ez_mooc/components/BuildCard.dart';
 import 'package:ez_mooc/components/VideoCard.dart';
 import 'package:ez_mooc/services/category_service.dart';
 import 'package:ez_mooc/services/enrollment_service.dart';
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:ez_mooc/services/subject_service.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:flutter/material.dart';
@@ -75,8 +76,14 @@ class HomeView extends GetView<HomeController> {
                         children: [
                           for (var element
                               in Get.find<CategoryService>().categories)
-                            _buildAllCardDetail(
-                                element.categoryImage, element.categoryName)
+                            GestureDetector(
+                              child: _buildAllCardDetail(
+                                  element.categoryImage, element.categoryName),
+                              onTap: () {
+                                Get.find<NavigationService>()
+                                    .changeSelectedItem(5);
+                              },
+                            )
                         ],
                       ),
                     ),
