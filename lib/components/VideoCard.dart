@@ -147,11 +147,15 @@ class VideoCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Image.network(
-                  vdoDetail.thumbnail,
-                  width: 80.0,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(
+                      12.0), // Same border radius as the container
+                  child: Image.network(
+                    vdoDetail.thumbnail,
+                    width: 80.0,
+                  ),
                 ),
-                SizedBox(width: 8.0),
+                SizedBox(width: 10.0),
                 Expanded(
                   child: Text(
                     '${vdoDetail.videoTitle}',
