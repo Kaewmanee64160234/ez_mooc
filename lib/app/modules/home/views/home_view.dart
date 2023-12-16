@@ -38,7 +38,9 @@ class HomeView extends GetView<HomeController> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed('/search');
+            },
             icon: Image.asset(
               'images/find_icon.png', // Replace with your search icon asset
               height: 50.0,

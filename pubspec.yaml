@@ -23,6 +23,7 @@ dependencies:
   skeletonizer: ^0.8.0
   skeleton_loader: ^2.0.0
   card_loading: ^0.3.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
