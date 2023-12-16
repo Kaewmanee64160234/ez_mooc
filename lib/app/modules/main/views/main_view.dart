@@ -3,6 +3,7 @@ import 'package:ez_mooc/app/modules/history/views/history_view.dart';
 import 'package:ez_mooc/app/modules/home/views/home_view.dart';
 import 'package:ez_mooc/app/modules/likeVdo/views/like_vdo_view.dart';
 import 'package:ez_mooc/app/modules/profile/views/profile_view.dart';
+import 'package:ez_mooc/app/modules/search_result/views/search_result_view.dart';
 import 'package:ez_mooc/app/modules/vdo_category/views/vdo_category_view.dart';
 import 'package:ez_mooc/services/home_service.dart';
 import 'package:flutter/material.dart';
@@ -97,6 +98,8 @@ class MainView extends GetView<MainController> {
         return ProfileView();
       case 5:
         return VdoCategoryView();
+      case 6:
+        return SearchResultView();
       default:
         return Container(); // Handle default case or return an empty container.
     }

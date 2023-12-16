@@ -1,3 +1,4 @@
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:get/get.dart';
 
@@ -10,5 +11,6 @@ class SearchResultBinding extends Bindings {
       () => SearchResultController(),
     );
     Get.lazyPut(() => VdoDetailService());
+    Get.lazyPut(() => NavigationService());
   }
 }

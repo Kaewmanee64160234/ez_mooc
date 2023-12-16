@@ -1,10 +1,10 @@
 import 'dart:ffi';
 
+import 'package:ez_mooc/components/VdoComponent.dart';
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
 import '../controllers/search_result_controller.dart';
 
 class SearchResultView extends GetView<SearchResultController> {
@@ -12,33 +12,37 @@ class SearchResultView extends GetView<SearchResultController> {
 
   @override
   Widget build(BuildContext context) {
+    final vdoList = Get.find<VdoDetailService>().currentVdoList.value;
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('SearchResultView'),
-          centerTitle: true,
+      appBar: AppBar(
+        title: Text(
+          "ผลการค้นหา",
+          style: TextStyle(
+            fontSize: 30.0,
+            fontFamily: 'Kanit',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
-        //body kis list view get from  current vdolist
-        //listview.builder
-        body: ListView.builder(
-            itemCount: Get.find<VdoDetailService>().currentVdoList.value.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                leading: Container(
-                    width: 100,
-                    height: 100,
-                    child: Image.network(Get.find<VdoDetailService>()
-                        .currentVdoList
-                        .value[index]
-                        .thumbnail)),
-                title: Text(Get.find<VdoDetailService>()
-                    .currentVdoList
-                    .value[index]
-                    .videoTitle),
-                trailing: Icon(Icons.chevron_right),
-                onTap: () {
-                  // Implement action on tapping a recent search item, if needed
-                },
-              );
-            }));
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Get.find<NavigationService>().changeSelectedItem(2);
+          },
+        ),
+        centerTitle: true,
+        backgroundColor: Color(0xff551E68),
+      ),
+      body: vdoList.isEmpty
+          ? Center(
+              child: Text('No Results Found')) // Show this if the list is empty
+          : ListView.builder(
+              itemCount: vdoList.length,
+              itemBuilder: (context, index) {
+                return VdoComponent(vdoDetail: vdoList[index]);
+              },
+            ),
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:ez_mooc/services/home_service.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -80,6 +81,10 @@ class SearchView extends GetView<Search_Controller> {
     }
     await Get.find<VdoDetailService>().getSearchVdo(searchQuery);
 
-    Get.toNamed('/search-result');
+    // Get.toNamed('/search-result');
+    //get out of this page
+    Get.back();
+
+    Get.find<NavigationService>().changeSelectedItem(6);
   }
 }
