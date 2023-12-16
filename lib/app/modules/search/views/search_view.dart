@@ -14,18 +14,28 @@ class SearchView extends GetView<Search_Controller> {
       body: Column(
         children: [
           // Search input field
-          TextField(
-            controller: textEditingController,
-            decoration: InputDecoration(
-              hintText: 'Enter search term',
-              suffixIcon: GestureDetector(
-                onTap: () {
-                  _performSearch();
-                },
-                child: Icon(Icons.search),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search...',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(25.0),
+                  borderSide: BorderSide(),
+                ),
+                suffixIcon: GestureDetector(
+                  onTap: () {
+                    _performSearch();
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.search),
+                  ),
+                ),
               ),
+              controller: textEditingController,
+              onSubmitted: (value) => _performSearch(),
             ),
-            onSubmitted: (value) => _performSearch(),
           ),
           SizedBox(height: 10),
           // Display recent searches
