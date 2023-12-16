@@ -61,31 +61,6 @@ class VideoCard extends StatelessWidget {
     );
   }
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return FutureBuilder<VdoDetail>(
-  //     future: extractPlaylistInfo(videoUrl),
-  //     builder: (context, snapshot) {
-  //       if (snapshot.connectionState == ConnectionState.waiting) {
-  //         return SkeletonLoader(
-  //           builder: _buildSkeletonLoader(),
-  //           items: 10, // Number of skeleton loaders
-  //           period: Duration(seconds: 2), // Duration of the animation loop
-  //         );
-  //       } else if (snapshot.hasError) {
-  //         return Text('Error loading video details');
-  //       } else if (snapshot.hasData) {
-  //         VdoDetail vdoDetail = snapshot.data!;
-
-  //         return _buildVideoCard(vdoDetail, snapshot.data!.videoTitle,
-  //             snapshot.data!.channelName, subject.description, subject);
-  //       } else {
-  //         return Text('Unknown error occurred');
-  //       }
-  //     },
-  //   );
-  // }
-
   Widget _buildVideoCard(
     VdoDetail vdoDetail,
     String channelImageUrl,
@@ -150,20 +125,49 @@ class VideoCard extends StatelessWidget {
                   ),
                   overflow: TextOverflow.ellipsis,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    descriptionPlaylist,
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Text(
+                //     descriptionPlaylist,
+                //     style: TextStyle(
+                //       fontSize: 20,
+                //     ),
+                //     overflow: TextOverflow.ellipsis,
+                //   ),
+                // ),
+                Divider(
+                  color: Color.fromARGB(255, 197, 197, 197),
+                  thickness: 1, // The thickness of the line itself.
                 ),
                 // Other Widgets
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Image.network(
+                  vdoDetail.thumbnail,
+                  width: 80.0,
+                ),
+                SizedBox(width: 8.0),
+                Expanded(
+                  child: Text(
+                    '${vdoDetail.videoTitle}',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // tree dot icon
+          // icon three dot vertically
+          Icon(Icons.more_horiz,
+              size: 30.0, color: Color.fromARGB(255, 0, 0, 0)),
         ],
       ),
     );

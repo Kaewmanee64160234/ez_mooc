@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:ez_mooc/components/VdoComponent.dart';
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:flutter/material.dart';
 
@@ -22,14 +23,9 @@ class VdoCategoryView extends GetView<VdoCategoryController> {
       child: ListView.builder(
           itemCount: Get.find<VdoDetailService>().currentVdoList.value.length,
           itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text(Get.find<VdoDetailService>()
-                    .currentVdoList
-                    .value[index]
-                    .videoURL),
-              ),
-            );
+            return VdoComponent(
+                vdoDetail:
+                    Get.find<VdoDetailService>().currentVdoList.value[index]);
           }),
     );
   }
