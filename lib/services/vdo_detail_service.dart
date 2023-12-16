@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class VdoDetailService extends GetxService {
   RxList<VdoDetail> vdoPlaylists = RxList<VdoDetail>.of([]).obs();
   RxInt currentCategory = 1.obs;
+  RxString textSearch = "".obs;
 
   Rx<Subject> currentSubject = Subject(
       subjectId: 1,
@@ -72,6 +73,21 @@ class VdoDetailService extends GetxService {
       currentVdoList.value.addAll(list);
       print(
           "currentVdoList.value.length : ${currentVdoList.value[0].toJson()}");
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
+
+  //get vdo sreach id from repository
+  Future<void> getSearchVdo(String search) async {
+    try {
+      print(
+          "==================get vdo by category id from repository==================");
+      List<VdoDetail> list = await VdoDetailRepository().getSearchVdo(search);
+      currentVdoList.value.clear();
+      currentVdoList.value.addAll(list);
+      print("currentVdoList.value.length : ${list.length}");
     } catch (e) {
       print(e);
       rethrow;

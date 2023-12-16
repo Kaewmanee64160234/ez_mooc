@@ -1,3 +1,4 @@
+import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,8 +18,9 @@ class Search_Controller extends GetxController {
       recentSearches.removeRange(4, recentSearches.length);
     }
 
-    // Save to shared preferences
     await prefs.setStringList('recentSearches', recentSearches);
+    Get.find<VdoDetailService>().textSearch.value = searchQuery;
+    await Get.find<VdoDetailService>().getSearchVdo(searchQuery);
   }
 
   Future<void> loadSearches() async {

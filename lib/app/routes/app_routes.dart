@@ -13,6 +13,7 @@ abstract class Routes {
   static const LIKE_VDO = _Paths.LIKE_VDO;
   static const VDO_CATEGORY = _Paths.VDO_CATEGORY;
   static const SEARCH = _Paths.SEARCH;
+  static const SEARCH_RESULT = _Paths.SEARCH_RESULT;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const LIKE_VDO = '/like-vdo';
   static const VDO_CATEGORY = '/vdo-category';
   static const SEARCH = '/search';
+  static const SEARCH_RESULT = '/search-result';
 }

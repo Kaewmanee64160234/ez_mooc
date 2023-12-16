@@ -1,3 +1,4 @@
+import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/search_controller.dart';
@@ -26,6 +27,8 @@ class SearchView extends GetView<Search_Controller> {
                 suffixIcon: GestureDetector(
                   onTap: () {
                     _performSearch();
+                    print(
+                        'Search query: ${textEditingController.text}'); // Debugging line
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -34,7 +37,9 @@ class SearchView extends GetView<Search_Controller> {
                 ),
               ),
               controller: textEditingController,
-              onSubmitted: (value) => _performSearch(),
+              onSubmitted: (value) {
+                _performSearch();
+              },
             ),
           ),
           SizedBox(height: 10),
@@ -49,7 +54,11 @@ class SearchView extends GetView<Search_Controller> {
                       title: Text(controller.recentSearches[index]),
                       trailing: Icon(Icons.chevron_right),
                       onTap: () {
-                        // Implement action on tapping a recent search item, if needed
+                        textEditingController.text =
+                            controller.recentSearches[index];
+                        // Implement
+                        //action on tapping a recent search item, if needed
+                        _performSearch();
                       },
                     );
                   }),
@@ -60,13 +69,17 @@ class SearchView extends GetView<Search_Controller> {
     );
   }
 
-  void _performSearch() {
+  Future<void> _performSearch() async {
     String searchQuery = textEditingController.text;
+
     if (searchQuery.isNotEmpty &&
         !controller.recentSearches.contains(searchQuery)) {
       controller.saveSearch(searchQuery);
-      print('Search query: $searchQuery'); // Debugging line
+
       textEditingController.clear(); // Clearing the text field after search
     }
+    await Get.find<VdoDetailService>().getSearchVdo(searchQuery);
+
+    Get.toNamed('/search-result');
   }
 }

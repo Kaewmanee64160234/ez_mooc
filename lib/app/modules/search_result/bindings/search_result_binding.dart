@@ -1,13 +1,13 @@
 import 'package:ez_mooc/services/vdo_detail_service.dart';
 import 'package:get/get.dart';
 
-import '../controllers/search_controller.dart';
+import '../controllers/search_result_controller.dart';
 
-class SearchBinding extends Bindings {
+class SearchResultBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<Search_Controller>(
-      () => Search_Controller(),
+    Get.lazyPut<SearchResultController>(
+      () => SearchResultController(),
     );
     Get.lazyPut(() => VdoDetailService());
   }

@@ -56,4 +56,30 @@ class VdoDetailRepository extends IRepository<VdoDetail> {
       rethrow;
     }
   }
+
+  //get search vdo
+  Future<List<VdoDetail>> getSearchVdo(String search) async {
+    try {
+      // body
+      final body = json.encode({'search': search});
+      // header
+      final headers = {'Content-Type': 'application/json'};
+      final response = await http.post(Uri.parse('$url/video/find'),
+          headers: headers, body: body);
+      if (response.statusCode == 200) {
+        final decodedResponse = json.decode(response.body);
+        List<dynamic> vdoJson = decodedResponse['data'];
+        List<VdoDetail> vdo =
+            vdoJson.map((vdoJson) => VdoDetail.fromJson(vdoJson)).toList();
+        return vdo;
+      } else {
+        print('Failed to load vdo - Status code: ${response.statusCode}');
+        print('Response body: ${response.body}');
+        throw Exception('Failed to load vdo');
+      }
+    } catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }

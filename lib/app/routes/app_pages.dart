@@ -16,6 +16,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/search/bindings/search_binding.dart';
 import '../modules/search/views/search_view.dart';
+import '../modules/search_result/bindings/search_result_binding.dart';
+import '../modules/search_result/views/search_result_view.dart';
 import '../modules/vdo_category/bindings/vdo_category_binding.dart';
 import '../modules/vdo_category/views/vdo_category_view.dart';
 import '../modules/vdo_page/bindings/vdo_page_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.SEARCH,
       page: () => SearchView(),
       binding: SearchBinding(),
+    ),
+    GetPage(
+      name: _Paths.SEARCH_RESULT,
+      page: () => const SearchResultView(),
+      binding: SearchResultBinding(),
     ),
   ];
 }
